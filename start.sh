@@ -1,0 +1,1 @@
+ cd /Users/fw/dev/spring-cloud/eureka-server ; /usr/bin/env /Users/fw/Library/Java/JavaVirtualMachines/openjdk-15.0.2/Contents/Home/bin/java -XX:+ShowCodeDetailsInExceptionMessages -Dfile.encoding=UTF-8 @/var/folders/f4/ylqjwhn518v4ptwv8yb1dvzc0000gn/T/cp_7mk7k3lu3x2i3plk9vbfc7dks.argfile com.example.demo.EurekaServerApplication 
