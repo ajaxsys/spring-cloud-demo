@@ -1,6 +1,7 @@
 package com.example.consumer.controller;
 
 
+import com.example.consumer.service.ProviderFiegnClient;
 import com.netflix.appinfo.InstanceInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -31,6 +32,9 @@ public class MyController {
 
     @Autowired
     RestTemplate restTemplateWithLB;
+
+    @Autowired
+    ProviderFiegnClient fiegnClient;
 
     @GetMapping("/hi")
     String hi() {
@@ -104,6 +108,7 @@ public class MyController {
         return forEntity;
     }
 
+    ////////////////////////// RestTemplate 传参 //////////////////////////
 
     @GetMapping("/client5")
     public Map restTemplateWithParameters() {
@@ -121,6 +126,19 @@ public class MyController {
                 Map.of(
                         "nameKey", "xiaofang",
                         "ageKey", 2));
+    }
+
+
+    ////////////////////////// 上面为止都是RestTemplate, 接下来换个客户端。 //////////////////////////
+
+
+    @GetMapping("/client7")
+    public String callByFeignClient() {
+        return fiegnClient.hi();
+    }
+    @GetMapping("/client8")
+    public Map callByFeignClientWithParameter() {
+        return fiegnClient.getMap("hehe", 66);
     }
 
 
