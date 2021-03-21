@@ -4,10 +4,15 @@
 	<modelVersion>4.0.0</modelVersion>
 	<packaging>pom</packaging>
 	<modules>
-		<module>eureka-provider</module>
+		<!--	启动Eureka服务器	-->
+		<module>eureka-server-cluster</module>
+		<!--	硬编码RestTemplate/FeignClient	-->
 		<module>eureka-provider</module>
 		<module>eureka-consumer</module>
-		<module>eureka-server-cluster</module>
+		<!--	Feign + API	-->
+		<module>user-provider</module>
+		<module>user-consumer</module>
+		<module>user-api</module>
 	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
