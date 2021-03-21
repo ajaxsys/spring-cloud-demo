@@ -5,8 +5,12 @@ import com.example.provider.service.HealthStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 public class MyController {
@@ -20,6 +24,14 @@ public class MyController {
     @GetMapping("/hi")
     String hi() {
         return "hi:" + port;
+    }
+
+    @GetMapping("/getMap")
+    Map<String, Object> getMap(String name, int age) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("name", name);
+        map.put("age", age);
+        return map;
     }
 
     /**
