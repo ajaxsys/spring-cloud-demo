@@ -5,7 +5,6 @@ import com.example.provider.service.HealthStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,6 +16,10 @@ public class MyController {
 
     @Value("${server.port}")
     Integer port;
+
+    @Value("${timeout.seconds}")
+    Integer timeoutSeconds;
+    int counter;
 
     @Autowired
     HealthStatusService healthStatusService;
@@ -32,6 +35,19 @@ public class MyController {
         map.put("name", name);
         map.put("age", age);
         return map;
+    }
+
+    @GetMapping("/timeout")
+    String getAPITimeout() {
+
+        try {
+            counter++;
+            System.out.println("Call counter = " + counter);
+            Thread.sleep(timeoutSeconds * 1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return "OK after timout seconds = " + timeoutSeconds;
     }
 
     /**

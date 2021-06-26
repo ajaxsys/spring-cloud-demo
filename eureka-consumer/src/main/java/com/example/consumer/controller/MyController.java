@@ -142,6 +142,12 @@ public class MyController {
     }
 
 
+    @GetMapping("/timeout")
+    public String callRibbonTimeoutTest() {
+        return fiegnClient.timeout();
+    }
+
+
 
     ////////////////////////// 上面为止都是硬编码，比较简单，但是API硬编码维护困难。
     // 接下来使用Feign，基于接口编程，这样Java调Java的时候，这样就可以编译器检查类型错误，更爽了。 //////////////////////////

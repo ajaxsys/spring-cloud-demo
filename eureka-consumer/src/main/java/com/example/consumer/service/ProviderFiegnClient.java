@@ -13,6 +13,9 @@ public interface ProviderFiegnClient {
     @GetMapping("/hi")
     public String hi();
 
+    @GetMapping("/timeout")
+    public String timeout();
+
     @GetMapping("/getMap")
     public Map<String, Object> getMap(@RequestParam String name, @RequestParam int age);
 }
