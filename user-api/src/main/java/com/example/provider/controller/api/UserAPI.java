@@ -7,13 +7,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-//【坑】注意，不能带根的@RequestMapping.https://blog.csdn.net/P_Top/article/details/106879539
-// @RequestMapping("/user")
+//【坑】注意，最好不带根的@RequestMapping.否则会报：Ambiguous mapping.
+// https://blog.csdn.net/P_Top/article/details/106879539
+//【案】非要用@RequestMaping也行，可以在fallback里面，设置为别的不一样的URL
+@RequestMapping("/user")
 public interface UserAPI {
 
-    @GetMapping("/User/{id}")
+    @GetMapping("/{id}")
     User findById(@PathVariable Integer id);
 
-    @GetMapping("/User/fallback")
+    @GetMapping("/fallback")
     String fallback();
 }
