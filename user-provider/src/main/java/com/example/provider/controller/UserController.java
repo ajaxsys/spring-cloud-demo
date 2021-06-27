@@ -24,6 +24,12 @@ public class UserController implements UserAPI {
         User user = new User();
         user.setId(id);
         user.setName("I am " + this.port);
+
         return user;
+    }
+
+    @Override
+    public String fallback() {
+        throw new RuntimeException("hehe");
     }
 }
